@@ -1,0 +1,77 @@
+import { StyleSheet, } from 'react-native'
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        marginTop:40,
+        marginHorizontal:10,
+    },
+    header:{
+        fontSize:40,
+        fontWeight:'bold',
+        textAlign:'center'
+    },
+    bckBtn:{
+        position:'absolute',
+        top:10,
+        left:-5,
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    bckBtnIcon:{
+        fontSize:35,
+        color:"#3d3d3d",
+    },
+    profilePicContainer:{
+        height:130,
+        width:130,
+        borderRadius:35,
+        backgroundColor:'#a2a2a8',
+        justifyContent:'center',
+        marginVertical:5,
+        position:'relative',
+        overflow: 'hidden', 
+    },
+    img:{
+        width:'100%',
+        height:'100%',
+        resizeMode:"contain",
+        borderRadius:35,
+    },
+    subHeader:{
+        fontSize:17,
+        fontWeight:'bold',
+        marginTop:20,
+    },
+    input:{
+        fontSize:18,
+        borderRadius:10,
+        color:'white',
+        backgroundColor:'black',
+        padding:5
+    },
+    lastInput:{
+        fontSize:18,
+        borderRadius:10,
+        color:'white',
+        backgroundColor:'black',
+        padding:5,
+        marginBottom:40,
+    },
+    saveBtn:{
+        marginVertical:10,
+        marginHorizontal:50,
+        padding:5,
+        borderRadius:30,
+        backgroundColor:'#04c704',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    saveBtnTxt:{
+        fontSize:30,
+        fontWeight:'bold',
+        textAlign:'center'
+    }
+})
+
+export default styles
