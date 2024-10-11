@@ -30,17 +30,34 @@ const styles = StyleSheet.create({
         fontSize:15,
         marginBottom:10
     },
-    contactContainer:{
-        backgroundColor:'grey',
-        padding:5,
+    fullContainer:{
+        flexDirection:'row',
+        padding:10,
+        justifyContent:'space-between',
+        backgroundColor:'#cecbcb',
         borderRadius:10,
-        justifyContent:'center',
         marginVertical:10
     },
+    contactContainer:{
+    },
+    onlineDot:{
+        width: 12,
+        height: 12,
+        borderRadius: 6,
+        backgroundColor: '#07e707',
+    },
+    cSubHeaderTop:{
+        fontSize:16,
+    },
+    cSubHeader:{
+        fontSize:16,
+        marginTop:15,
+    },
     input:{
-        color:'white',
-        fontSize:20,
-    }
+        color:'#292828',
+        fontSize:17,
+        fontWeight:'bold',
+    },
 })
 
 export default styles

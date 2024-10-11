@@ -37,26 +37,39 @@ const CourierList = () => {
       data={registeredCouriers}
       renderItem={({item})=>(
         <TouchableOpacity onPress={() => goToCourierDetails(item.id)}>
-          <View style={styles.contactContainer}>
-            <Text style={styles.input}>
-              {item.courierName}
-            </Text>
 
-            <Text style={styles.input}>
-              {item.courierAddress}
-            </Text>
+          {/* Contact and online components*/}
+          <View style={styles.fullContainer}>
 
-            <Text style={styles.input}>
-              {item.courierPhoneNumber}
-            </Text>
+            {/* Contact container */}
+            <View style={styles.contactContainer}>
 
-            <Text style={styles.input}>
-              {item.companyCourierId}
-            </Text>
+              <Text style={styles.cSubHeaderTop}>Name:</Text>
+              <Text style={styles.input}>
+                {item.courierName}
+              </Text>
 
-            <Text style={styles.input}>
-              {item.guarantorName}
-            </Text>
+              <Text style={styles.cSubHeader}>Address:</Text>
+              <Text style={styles.input}>
+                {item.courierAddress}
+              </Text>
+
+              <Text style={styles.cSubHeader}>Number:</Text>
+              <Text style={styles.input}>
+                {item.courierPhoneNumber}
+              </Text>
+
+              <Text style={styles.cSubHeader}>Company ID:</Text>
+              <Text style={styles.input}>
+                {item.companyCourierId}
+              </Text>
+            </View>
+
+            {/* Online/Offline Container */}
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <View style={[styles.onlineDot, { backgroundColor: item.isOnline ? '#07e707' : 'grey' }]} />
+              </View>
+            
           </View>
         </TouchableOpacity>
       )}

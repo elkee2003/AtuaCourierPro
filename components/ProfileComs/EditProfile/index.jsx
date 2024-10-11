@@ -6,6 +6,7 @@ import { GOOGLE_API_KEY } from '@/keys';
 import styles from './styles'
 import { router } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { AntDesign } from '@expo/vector-icons';
 import { useProfileContext } from '../../../providers/ProfileProvider';
 
@@ -17,7 +18,20 @@ const EditProfile = () => {
 
     const autocompleteRef = useRef(null)
 
-    const {firstName,setFirstName, lastName, setLastName, profilePic, setProfilePic, address, setAddress, lat, setLat, lng, setLng, phoneNumber, setPhoneNumber, errorMessage, onValidateInput,} = useProfileContext()
+    const {
+      firstName,setFirstName, 
+      lastName, setLastName, 
+      profilePic, setProfilePic, 
+      address, setAddress,
+      landMark, setLandMark, 
+      lat, setLat, lng, setLng, 
+      phoneNumber, setPhoneNumber,
+      bankName, setBankName, 
+      accountNum, setAccountNum, 
+      adminName, setAdminName, 
+      adminLastName, setAdminLastName,
+      adminNumber, setAdminNumber, errorMessage, onValidateInput,
+    } = useProfileContext()
 
     const pickImage = async () => {
       // No permissions request is necessary for launching the image library
@@ -30,13 +44,21 @@ const EditProfile = () => {
         setProfilePic(result.assets[0].uri);
       }
     };
+
+    // Function to go to Guarantor Page
+    const onNxtPage = () => {
+        if(onValidateInput()){
+            console.warn('next page')
+            router.push('/profile/profilepage');
+        }
+    }
     
-    // Navigation Function
-    const handleSave = () => {
-      if (onValidateInput()) {
-          router.push('/profile/profilepage'); // Navigate to the profile screen upon successful validation
-      }
-    };
+    // // Navigation Function
+    // const handleSave = () => {
+    //   if (onValidateInput()) {
+    //       router.push('/profile/profilepage'); // Navigate to the profile screen upon successful validation
+    //   }
+    // };
 
     // function to handle focus
     const handleFocusChange = (focused) => {
@@ -46,7 +68,7 @@ const EditProfile = () => {
     // Start Of GooglePlacesAutoComplete function
     const handlePlaceSelect = (data, details = null) => {
       // Extract the address from the selected place
-      const selectedAddress = data?.description || details?.formatted_address;
+      const selectedLandMark = data?.description || details?.formatted_address;
 
       const selectedAddylat = JSON.stringify(details?.geometry?.location.lat) 
 
@@ -55,7 +77,7 @@ const EditProfile = () => {
       console.log(selectedAddylng, selectedAddylat)
   
       // Update the address state
-      setAddress(selectedAddress);
+      setLandMark(selectedLandMark);
       setLat(selectedAddylat)
       setLng(selectedAddylng)
   
@@ -64,8 +86,9 @@ const EditProfile = () => {
     // function to clear autocompleter
     const handleClearAddress = () => {
         autocompleteRef.current?.clear(); // Clear the autocomplete input
-        setAddress(null);
+        setLandMark(null);
     };
+
 
     return (
     <View style={styles.container}>
@@ -101,20 +124,20 @@ const EditProfile = () => {
       placeholder='Surname (Optional)'
       style={styles.input}
       />
-
-      {/* <TextInput 
+      
+      <TextInput 
       value={address}
       onChangeText={setAddress}
       placeholder='Address'
-      style={{...styles.input, color: '#04df04'}}
-      /> */}
+      style={styles.input}
+      />
 
       {/* Googleplaces autocomplete */}
       <View style={isFocused ? styles.gContainerFocused : styles.gContainer}>
         <GooglePlacesAutocomplete
         fetchDetails
         ref={autocompleteRef}
-        placeholder='Select Address From Here'
+        placeholder='Select closest land mark from here'
         onPress={handlePlaceSelect}
         textInputProps={{
           onFocus:() => handleFocusChange(true),
@@ -154,16 +177,11 @@ const EditProfile = () => {
       {/* Error Message */}
       <Text style={styles.error}>{errorMessage}</Text>
       
-      <View style={styles.scrnBtns}>
-          {/* <Link href={'/profile'} asChild> */}
-              <TouchableOpacity onPress={handleSave} style={styles.saveBtn}>
-              <Text style={styles.saveTxt}>Save</Text>
-              </TouchableOpacity>
-          {/* </Link> */}
-
-          <Pressable onPress={()=>console.warn('sign out')} style={styles.signoutBtn}>
-          <Text style={styles.signoutTxt}>Sign Out</Text>
-          </Pressable>
+      {/* Button */}
+      <View>
+          <TouchableOpacity onPress={onNxtPage} style={styles.nxtBtn}>
+              <MaterialIcons name="navigate-next" style={styles.nxtBtnIcon} />
+          </TouchableOpacity>
       </View>
       
       

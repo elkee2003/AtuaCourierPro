@@ -67,36 +67,18 @@ const styles = StyleSheet.create({
         marginHorizontal:5,
         marginBottom:5,
     },
-    saveBackground:{
-        alignItems:'center',
-        backgroundColor:'#18b403',
-        padding: 15,
-    },
-    scrnBtns:{
-        marginTop:30,
+    nxtBtn:{
+        backgroundColor:'#1a1b1a',
+        marginTop:10,
+        padding:2,
+        marginHorizontal:80,
         marginBottom:10,
-        gap:15
-    },
-    saveBtn:{
-        backgroundColor:'#0fcf0f',
-        padding:10,
-        marginHorizontal:40,
         alignItems:'center',
         borderRadius:30,
     },
-    saveTxt:{
-        fontSize:25,
+    nxtBtnIcon:{
+        fontSize:50,
         color:'#ffffff'
-    },
-    signoutBtn:{
-        padding:10,
-        marginHorizontal:'auto',
-        alignItems:'center',
-        borderRadius:30,
-    },
-        signoutTxt:{
-        fontSize:20,
-        color:'#c70707'
     },
     gContainer:{
         position:'relative',
